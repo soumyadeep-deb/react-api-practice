@@ -10,21 +10,21 @@ function DropdownMenu({ onSetType }) {
 
       <div
         className="dropdownMenu__items"
-        onClick={() => onSetType("category=business")}
+        onClick={() => onSetType("category=business&")}
       >
         Business
       </div>
 
       <div
         className="dropdownMenu__items"
-        onClick={() => onSetType("category=health")}
+        onClick={() => onSetType("category=health&")}
       >
         Health
       </div>
 
       <div
         className="dropdownMenu__items"
-        onClick={() => onSetType("category=sports")}
+        onClick={() => onSetType("category=sports&")}
       >
         Sports
       </div>
