@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './NewsList.css'
+import "./NewsList.css";
 
 function NewsList(props) {
   const [posts, setPosts] = useState([]);
@@ -13,15 +13,14 @@ function NewsList(props) {
   useEffect(() => {
     async function getData() {
       const res = await axios.get(props.url);
-      console.log(res)
-      const data = await res.data;
+      //console.log(res)
       onSetPosts(res.data.sources);
     }
     getData();
   }, [props.url]);
 
-// API call using promise
-/*
+  // API call using promise
+  /*
   useEffect(() => {
     axios
       .get(props.url)
@@ -36,6 +35,17 @@ function NewsList(props) {
       });
   }, [props.url]);
 */
+  let categories = [
+    "",
+    "business",
+    "health",
+    "sports",
+    "entertainment",
+    "general",
+    "science",
+    "technology",
+  ];
+  const [cate, setCat] = useState("");
 
   return (
     <div className="newsList">
@@ -43,8 +53,9 @@ function NewsList(props) {
       <ul>
         {posts && posts.length > 0
           ? posts.map((post) => (
-              <li key={post.id}>
-                {post.name} | <b>{post.category}</b> |{" "}
+              <li key={post.id ? post.id : null}>
+                {post.name ? post.name : "Nothing to show"} |{" "}
+                <b>{post.category ? post.category : "Nothing to show"}</b> |{" "}
                 {<a href={post.url}>Link</a>}
               </li>
             ))

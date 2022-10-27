@@ -2,62 +2,32 @@ import React from "react";
 import "./DropdownMenu.css";
 
 function DropdownMenu({ onSetType }) {
+  let categories = [
+    "",
+    "business",
+    "health",
+    "sports",
+    "entertainment",
+    "general",
+    "science",
+    "technology",
+  ];
+
   return (
     <div className="dropdownMenu">
       <button className="dropbtn">Filter</button>
       <div className="dropdown-content">
-        <div className="dropdownMenu__items" onClick={() => onSetType("")}>
-          AllNews
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=business&")}
-        >
-          Business
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=health&")}
-        >
-          Health
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=sports&")}
-        >
-          Sports
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=entertainment&")}
-        >
-          Entertainment
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=general&")}
-        >
-          General
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=science&")}
-        >
-          Science
-        </div>
-
-        <div
-          className="dropdownMenu__items"
-          onClick={() => onSetType("category=technology&")}
-        >
-          Technology
-        </div>
+        {categories.map((cat) => (
+          <div
+            className="dropdownMenu__items"
+            onClick={() => {
+              cat ? onSetType(`category=${cat}&`) : onSetType("");
+            }}
+          >
+            {cat ? cat : "All"}
+          </div>
+        ))}
+        
       </div>
     </div>
   );
